@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+ldc2 "$1".d --of="$1".exe
+termux-elf-cleaner "$1".exe &> /dev/null
+./"$1".exe
+
