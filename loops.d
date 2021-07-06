@@ -1,0 +1,30 @@
+#!/usr/bin/env rdmd
+import std : writeln;
+/*
+Computes the average of
+the elements of an array.
+*/
+double average(int[] array) {
+  immutable initialLength = array.length;
+  double accumulator = 0.0;
+  while (array.length) {
+    // this could be also done with .front
+    // with import std.array : front;
+    accumulator += array[0];
+    array = array[1 .. $];
+  }
+  return accumulator / initialLength;
+}
+
+void main() {
+  auto testers = [
+    // 20
+    [5, 15],
+    // 10
+    [2, 3, 2, 3],
+    // 20
+    [3, 6, 2, 9]
+  ];
+  for (auto i = 0; i < testers.length; ++i)
+    writeln("The average of ", testers[i], " = ", average(testers[i]));
+}
